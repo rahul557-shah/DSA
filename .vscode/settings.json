@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "Better comments": "",
+        "random": "c",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "new": "cpp"
+    },
+    "cmake.configureOnOpen": false,
+    "C_Cpp.errorSquiggles": "Disabled"
+}
