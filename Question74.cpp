@@ -52,6 +52,6 @@ int main()
     {
         cout << A[i] << " ";
     }
-    cout << "\nMaximum Profit is " << MaxProfit(A, n) << endl;
+    cout << "\nMaximum Profit is " << maxProfit(A, n) << endl;
     return 0;
 }
