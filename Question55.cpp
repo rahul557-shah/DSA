@@ -1,6 +1,14 @@
-//Next Permutation of Numbers
+// Next Permutation of Numbers
 #include <bits/stdc++.h>
 using namespace std;
+void printArray(vector<int> A)
+{
+    for (int i = 0; i < A.size(); i++)
+        cout << A[i] << " ";
+    cout << endl;
+}
+// Time->O(n)
+// Space->O(1)
 void NextPermutation(vector<int> &A)
 {
     int index = -1;
@@ -27,11 +35,42 @@ void NextPermutation(vector<int> &A)
         reverse(A.begin() + index, A.end());
     }
 }
+// Time->O(n)
+// Space->O(1)
+void nextPermutation(vector<int> &A)
+{
+    int n = A.size();
+    int i = n - 2;
+    while (i >= 0 && A[i] >= A[i + 1])
+        i--;
+    if (i >= 0)
+    {
+        int j = n - 1;
+        while (A[j] <= A[i])
+            j--;
+        swap(A[i], A[j]);
+        reverse(A.begin() + i + 1, A.end());
+    }
+    else
+        reverse(A.begin(), A.end());
+}
 int main()
 {
-    std::vector<int> myvector = {1, 5, 8, 4, 7, 6, 5, 3, 1};
-    NextPermutation(myvector);
-    for (int i = 0; i < myvector.size(); i++)
-        cout << myvector[i]<<",";
+    int n;
+    vector<int> myvector;
+    cout << "Enter the size: " << endl;
+    cin >> n;
+    cout << "Enter the elements: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        myvector.push_back(x);
+    }
+    cout << "Array is: " << endl;
+    printArray(myvector);
+    nextPermutation(myvector);
+    cout << "Next Permutation is: " << endl;
+    printArray(myvector);
     return 0;
 }
