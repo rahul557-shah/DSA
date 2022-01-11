@@ -1,8 +1,8 @@
-//Maximum Profit By Buying and Selling the stock atmost twice
+// Maximum Profit By Buying and Selling the stock atmost twice(Leetcode Q122)
 #include <bits/stdc++.h>
 using namespace std;
-//Time->O(n)
-//Space->O(n)
+// Time->O(n)
+// Space->O(n)
 int MaxProfit(int A[], int n)
 {
     int dp[n];
@@ -10,7 +10,7 @@ int MaxProfit(int A[], int n)
         dp[i] = 0;
     int ma = A[n - 1];
     int mi = A[0];
-    for (int i = n - 2; i > 0; i--)
+    for (int i = n - 2; i >= 0; i--)
     {
         if (A[i] > ma)
             ma = A[i];
@@ -23,6 +23,18 @@ int MaxProfit(int A[], int n)
         dp[i] = max(dp[i - 1], dp[i] + (A[i] - mi));
     }
     return dp[n - 1];
+}
+// Time->O(n)
+// Space->O(1)
+int maxProfit(int A[], int n)
+{
+    int profit = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (A[i] > A[i - 1])
+            profit += A[i] - A[i - 1];
+    }
+    return profit;
 }
 int main()
 {
