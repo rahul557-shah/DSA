@@ -37,6 +37,7 @@ void NextPermutation(vector<int> &A)
 }
 // Time->O(n)
 // Space->O(1)
+//Easier Approach
 void nextPermutation(vector<int> &A)
 {
     int n = A.size();
