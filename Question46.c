@@ -1,4 +1,4 @@
-//Count the pair equal to given sum
+// Count the pair equal to given sum
 #include <stdio.h>
 #include <stdlib.h>
 struct Array
@@ -6,7 +6,8 @@ struct Array
     int length;
     int *A;
 };
-//Time->O(n^2)
+// Time->O(n^2)
+// Space->O(1)
 int Sum(struct Array arr, int sum)
 {
     int count = 0;
