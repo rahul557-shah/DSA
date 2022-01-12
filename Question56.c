@@ -1,4 +1,4 @@
-//Count the inversions
+// Count the inversions
 #include <stdio.h>
 #include <stdlib.h>
 struct Array
@@ -6,6 +6,30 @@ struct Array
     int length;
     int *A;
 };
+void printArray(struct Array arr)
+{
+    for (int i = 0; i < arr.length; i++)
+        printf("%d ", arr.A[i]);
+    printf("\n");
+}
+// Time->O(n^2)
+// Space->O(1)
+int countInversion(struct Array arr)
+{
+    int count = 0;
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr.A[i] > arr.A[j])
+                count++;
+        }
+    }
+    return count;
+}
+// Time->O(nlogn)
+// Space->O(n)
 int Merge(struct Array arr, int B[], int l, int mid, int h)
 {
     int i, j, k;
@@ -59,12 +83,9 @@ int main()
         scanf("%d", &arr.A[i]);
     }
     printf("The Array is:\n");
-    for (int i = 0; i < arr.length; i++)
-    {
-        printf("%d ", arr.A[i]);
-    }
+    printArray(arr);
     int B[length];
     int ans = RecursiveMergeSort(arr, B, 0, arr.length - 1);
-    printf("\nTotal Number of Inversions is: %d ", ans);
+    printf("Total Number of Inversions is: %d ", ans);
     return 0;
 }
