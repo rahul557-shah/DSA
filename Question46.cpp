@@ -1,8 +1,8 @@
-//Count Pair with given sum
+// Count Pair with given sum
 #include <bits/stdc++.h>
 using namespace std;
-//Time->O(n)
-//Space->O(n)
+// Time->O(n)
+// Space->O(n)
 int getPairsCount(int arr[], int n, int sum)
 {
     unordered_map<int, int> m;
@@ -20,7 +20,6 @@ int getPairsCount(int arr[], int n, int sum)
     }
     return count;
 }
-
 int main()
 {
     int arr[10];
@@ -39,6 +38,6 @@ int main()
     }
     cout << "\nEnter the sum: " << endl;
     cin >> sum;
-    cout << "Count of pairs is: " << getPairsCount(arr, n, sum);
+    cout << "Count of pairs is: " << getPaircount(arr, n, sum);
     return 0;
 }
