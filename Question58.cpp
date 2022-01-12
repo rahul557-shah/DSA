@@ -1,6 +1,36 @@
-//Common elements among three sorted array
+// Common elements among three sorted array
 #include <bits/stdc++.h>
 using namespace std;
+// Time->O(n1+n2+n3)
+// Space->O(n1+n2+n3)
+vector<int> commonElement(int A[], int B[], int C[], int n1, int n2, int n3)
+{
+    vector<int> res;
+    unordered_map<int, int> m1;
+    unordered_map<int, int> m2;
+    unordered_map<int, int> m3;
+
+    for (int i = 0; i < n1; i++)
+        m1[A[i]]++;
+    for (int i = 0; i < n2; i++)
+        m2[B[i]]++;
+    for (int i = 0; i < n3; i++)
+        m3[C[i]]++;
+    for (int i = 0; i < n1; i++)
+    {
+        if (m1[A[i]] > 0 && m2[A[i]] > 0 && m3[A[i]] > 0)
+        {
+            res.push_back(A[i]);
+            m1[A[i]] = 0;
+        }
+    }
+    if (res.size() == 0)
+        return {-1};
+    else
+        return res;
+}
+// Time->O(n1+n2+n3)
+// Space->O(1)
 vector<int> Common(int A[], int B[], int C[], int n1, int n2, int n3)
 {
     vector<int> res;
@@ -80,7 +110,7 @@ int main()
     }
     cout << "\nThe Common Elements are :" << endl;
     vector<int> common;
-    common = Common(A, B, C, n1, n2, n3);
+    common = commonElement(A, B, C, n1, n2, n3);
     for (int i = 0; i < common.size(); i++)
     {
         cout << common[i] << " ";
