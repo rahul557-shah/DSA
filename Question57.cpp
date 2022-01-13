@@ -1,26 +1,21 @@
-//Find if there is subarray with sum equal to zero.
+// Find if there is subarray with sum equal to zero.
 #include <bits/stdc++.h>
 using namespace std;
+// Time->O(n)
+// Space->O(m)
 bool SumZero(int a[], int n)
 {
-    int sum = 0, flag = 0;
+    int pre_sum = 0;
     unordered_map<int, int> mymap;
     for (int i = 0; i < n; i++)
     {
-        //Finding PrefixSum
-        sum += a[i];
-        if (a[i] == 0 || sum == 0 || mymap[sum] == 1)
-        {
-            flag = 1;
-            break;
-        }
+        pre_sum += a[i];
+        if (pre_sum == 0 || mymap[pre_sum] == 1)
+            return true;
         else
-            mymap[sum] = 1;
+            mymap[pre_sum]++;
     }
-    if (flag == 1)
-        return true;
-    else
-        return false;
+    return false;
 }
 int main()
 {
