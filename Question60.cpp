@@ -1,14 +1,21 @@
-// Longest consecutive Subarray(Leetcode Q128)
+//Longest consecutive Subarray
 #include <bits/stdc++.h>
 using namespace std;
-// Time->O(nlogn)
-// Space->O(1)
+//Time->O(nlogn)
+//Space->O(1)
 int LongestSubsequence(int A[], int n)
 {
     int ans, count;
     ans = count = 0;
+    vector<int> v;
     sort(A, A + n);
-    for (int i = 0; i < n; i++)
+    v.push_back(A[0]);
+    for (int i = 1; i < n; i++)
+    {
+        if (A[i] != A[i - 1])
+            v.push_back(A[i]);
+    }
+    for (int i = 0; i < v.size(); i++)
     {
         if (i > 0 && A[i] == A[i - 1] + 1)
             count++;
@@ -18,8 +25,8 @@ int LongestSubsequence(int A[], int n)
     }
     return ans;
 }
-// Time->O(N)
-// Space->O(N)
+//Time->O(N)
+//Space->O(N)
 int LongestConsecSubSequence(int A[], int n)
 {
     int ans = 0;
@@ -60,6 +67,6 @@ int main()
     {
         cout << A[i] << " ";
     }
-    printf("\nLongest Subsequence is: %d", LongestSubsequence(A, n));
+    printf("\nLongest Subsequence is: %d", LongestConsecSubSequence(A, n));
     return 0;
 }
