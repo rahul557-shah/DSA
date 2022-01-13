@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // Time->O(n)
-// Space->O(m)
+// Space->O(n)
 bool SumZero(int a[], int n)
 {
     int pre_sum = 0;
