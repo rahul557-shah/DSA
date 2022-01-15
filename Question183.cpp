@@ -26,7 +26,7 @@ int longestValidPara(string A)
             else
             {
                 len = i - stk.top();
-                maxi = max(maxi, i - stk.top());
+                maxi = max(maxi, len);
             }
         }
     }
