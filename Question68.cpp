@@ -1,7 +1,8 @@
-//Median of two Sorted Arrays for both equal and different sizes
+// Median of two Sorted Arrays for both equal and different sizes
 #include <bits/stdc++.h>
 using namespace std;
-//Time->O(n)
+// Time->O(log(min(n1,n2)))
+// Time->O(1)
 double MedianOfSorted(int A[], int n1, int B[], int n2)
 {
     if (n2 < n1)
@@ -14,7 +15,7 @@ double MedianOfSorted(int A[], int n1, int B[], int n2)
         int cut2 = (n1 + n2 + 1) / 2 - cut1;
         int left1 = cut1 == 0 ? INT_MIN : A[cut1 - 1];
         int left2 = cut2 == 0 ? INT_MIN : B[cut2 - 1];
-        int right1 = cut1 ==n1 ? INT_MAX : A[cut1];
+        int right1 = cut1 == n1 ? INT_MAX : A[cut1];
         int right2 = cut2 == n2 ? INT_MAX : B[cut2];
         if (left1 <= right2 && left2 <= right1)
         {
