@@ -1,8 +1,8 @@
 
-//Smallest Subarray greater than given sum
+// Smallest Subarray greater than given sum
 #include <bits/stdc++.h>
 using namespace std;
-//Time->O(n^2)
+// Time->O(n^2)
 int SmallestSubArray(int A[], int n, int x)
 {
     int mi = INT_MAX;
@@ -18,28 +18,25 @@ int SmallestSubArray(int A[], int n, int x)
     }
     return mi;
 }
-//Time->O(n)
-//Space->O(1)
+// Time->O(n)
+// Space->O(1)
+// Sliding Window Approach
 int SmallestSubA(int A[], int n, int x)
 {
-    int i, j, sum;
-    i = j = sum = 0;
-    int mi = INT_MAX;
-    while (i <= j && j < n)
+    int left, sum;
+    left = sum = 0;
+    int ans = INT_MAX;
+    for (int i = 0; i < n; i++)
     {
-        while (sum <= x && j < n)
+        sum += A[i];
+        while (sum > x)
         {
-            sum += A[j];
-            j++;
-        }
-        while (sum > x && i <= j)
-        {
-            mi = min(mi, j - i);
-            sum -= A[i];
-            i++;
+            ans = min(ans, i - left + 1);
+            sum -= A[left];
+            left++;
         }
     }
-    return mi;
+    return ans;
 }
 int main()
 {
