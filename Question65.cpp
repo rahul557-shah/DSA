@@ -1,24 +1,27 @@
 
-//Three way partitioning of an Array
+// Three way partitioning of an Array(same as sort 0's, 1's and 2's)
 #include <bits/stdc++.h>
 using namespace std;
+// Time->O(n)
+// Space->O(1)
 void ThreewayPartition(int A[], int n, int a, int b)
 {
-    int l = 0;
-    int r = n - 1;
-    for (int i = 0; i <= r; i++)
+    int low = 0, high = n - 1;
+    for (int mid = 0; mid <= high;)
     {
-        if (A[i] < a)
+        if (A[mid] < a)
         {
-            swap(A[i], A[l]);
-            l++;
+            swap(A[low], A[mid]);
+            low++;
+            mid++;
         }
-        else if (A[i] > b)
+        else if (A[mid] > b)
         {
-            swap(A[i], A[r]);
-            r--;
-            i--;
+            swap(A[mid], A[high]);
+            high--;
         }
+        else
+            mid++;
     }
 }
 int main()
