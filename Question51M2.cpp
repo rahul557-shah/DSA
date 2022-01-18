@@ -1,6 +1,8 @@
-//Minimize the maximum difference between heights
+// Minimize the maximum difference between heights
 #include <bits/stdc++.h>
 using namespace std;
+// Time->O(nlogn)
+// Space->O(1)
 int getMinDiff(int arr[], int n, int k)
 {
     sort(arr, arr + n);

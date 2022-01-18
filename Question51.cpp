@@ -1,6 +1,8 @@
 //Minimize the maximum difference between heights
 #include <bits/stdc++.h>
 using namespace std;
+// Time->O(nlogn)
+// Space->O(n)
 int getMinDiff(int arr[], int n, int k)
 {
     vector<pair<int, int>> v;
