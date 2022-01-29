@@ -1,4 +1,4 @@
-// Level Order Traversal Of a Binary Tree
+//Level Order Traversal Of a Binary Tree
 #include <bits/stdc++.h>
 using namespace std;
 struct node
@@ -47,30 +47,24 @@ void Treecreate()
         q.pop();
     }
 }
-// Time->O(n)
-// Space->O(n)
+//Time->O(n)
+//Space->O(n)
 vector<int> LevelOrder(struct node *root)
 {
     vector<int> res;
     if (root == NULL)
         return res;
-    res.push_back(root->data);
     queue<node *> q;
     q.push(root);
     while (!q.empty())
     {
         node *temp = q.front();
-        q.pop();
+        res.push_back(temp->data);
         if (temp->lchild)
-        {
-            res.push_back(temp->lchild->data);
             q.push(temp->lchild);
-        }
         if (temp->rchild)
-        {
-            res.push_back(temp->rchild->data);
             q.push(temp->rchild);
-        }
+        q.pop();
     }
     return res;
 }
