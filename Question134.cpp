@@ -1,4 +1,4 @@
-//Flatten a Binary Tree into a Linked List
+// Flatten a Binary Tree into a Linked List
 #include <bits/stdc++.h>
 using namespace std;
 struct node
@@ -47,8 +47,8 @@ void Treecreate()
         q.pop();
     }
 }
-//Time->O(n)
-//Space->O(n)
+// Time->O(n)
+// Space->O(n)
 void Flatten(struct node *root)
 {
     stack<node *> st;
@@ -68,26 +68,25 @@ void Flatten(struct node *root)
         temp->lchild = NULL;
     }
 }
-//Time->O(n)
-//Space->O(1)
-void FlattenInConstantSpace(struct node *root)
+// Time->O(n)
+// Space->O(1)
+node *FlattenInConstantSpace(struct node *root)
 {
-    if (root == NULL)
-        return;
-    if (root->lchild == NULL && root->rchild == NULL)
-        return;
-    if (root->lchild != NULL)
+    node *curr = root, *prev;
+    while (curr != NULL)
     {
-        FlattenInConstantSpace(root->lchild);
-        node *temp = root->rchild;
-        root->rchild = root->lchild;
-        root->lchild = NULL;
-        node *t = root->rchild;
-        while (t->rchild != NULL)
-            t = t->rchild;
-        t->rchild = temp;
-        FlattenInConstantSpace(root->rchild);
+        if (curr->lchild)
+        {
+            prev = curr->lchild;
+            while (prev->rchild)
+                prev = prev->rchild;
+            prev->rchild = curr->rchild;
+            curr->rchild = curr->lchild;
+            curr->lchild = NULL;
+        }
+        curr = curr->rchild;
     }
+    return root;
 }
 void PreOrder(struct node *root)
 {
@@ -103,8 +102,13 @@ int main()
     int n1, n2;
     cout << "Create a binary tree" << endl;
     Treecreate();
-    FlattenInConstantSpace(root);
+    node *res = FlattenInConstantSpace(root);
     cout << "Flattened Linked List" << endl;
-    PreOrder(root);
+    while (res != NULL)
+    {
+        cout << res->data << " ";
+        res = res->rchild;
+    }
+    cout << endl;
     return 0;
 }
