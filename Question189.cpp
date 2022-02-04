@@ -66,11 +66,11 @@ int MaxSum(node *node, int &maxi)
 
     maxi = max(maxi, node->data + left + right);
 
-    return node->data + max(left, right);
+    return max(left, right) + node->data;
 }
 int findMaxPathSum(node *root)
 {
-    int maxi = INT_MIN;
+    int maxi = 0;
     MaxSum(root, maxi);
     return maxi;
 }
