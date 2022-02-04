@@ -1,4 +1,4 @@
-// Flatten a Binary Tree into a Linked List
+// Flatten a Binary Tree into a Linked List(Leetcode Q.114)
 #include <bits/stdc++.h>
 using namespace std;
 struct node
