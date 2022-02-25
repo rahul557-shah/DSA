@@ -39,6 +39,8 @@ Node *InorderPre(Node *root)
         p = p->right;
     return p;
 }
+// Time->O(logn)
+// Space->O(1)
 Node *DeleteNode(Node *root, int key)
 {
     if (root == NULL)
