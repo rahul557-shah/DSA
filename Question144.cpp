@@ -1,4 +1,4 @@
-//Delete a node in a BST
+// Delete a node in a BST(Leetcode Q450)
 #include <bits/stdc++.h>
 using namespace std;
 struct Node
@@ -49,23 +49,17 @@ Node *DeleteNode(Node *root, int key)
         root->right = DeleteNode(root->right, key);
     else
     {
+        if (root->left == NULL && root->right == NULL)
+            return NULL;
         if (root->left == NULL)
-        {
-            Node *temp = root->right;
-            delete (root);
-            return temp;
-        }
+            return root->right;
         else if (root->right == NULL)
-        {
-            Node *temp = root->left;
-            delete (root);
-            return temp;
-        }
+            return root->left;
         else
         {
             Node *temp = InorderPre(root);
-            swap(root->data, temp->data);
-            root->left = DeleteNode(root->left, key);
+            root->data = temp->data;
+            root->left = DeleteNode(root->left, root->data);
         }
     }
     return root;
