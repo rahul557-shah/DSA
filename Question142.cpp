@@ -1,4 +1,4 @@
-//Check whether a given tree is a BST or not
+// Check whether a given tree is a BST or not
 #include <bits/stdc++.h>
 using namespace std;
 struct Node
@@ -32,6 +32,9 @@ void Inorder(Node *root)
         Inorder(root->right);
     }
 }
+// Time->O(n)
+// Space->O(1)
+// Approach-I
 void Check(Node *root, Node *&prev, int &flag)
 {
     if (root == NULL)
@@ -52,18 +55,33 @@ bool IsBST(Node *root)
     Check(root, prev, flag);
     return flag;
 }
+// Time->O(n)
+// Space->O(1)
+// Approach-II
+bool checkBST(Node *root, int minRange, int maxRange)
+{
+    if (root == NULL)
+        return true;
+    if (root->data <= minRange || root->data >= maxRange)
+        return false;
+    return checkBST(root->left, INT_MIN, root->data) && checkBST(root->right, root->data, INT_MAX);
+}
+bool isBST(Node *root)
+{
+    return checkBST(root, INT_MIN, INT_MAX);
+}
 int main()
 {
     struct Node *root = NULL;
-    root = insert(root, 15);
-    insert(root, 10);
-    insert(root, 18);
-    insert(root, 25);
+    root = insert(root, 5);
+    insert(root, 4);
+    insert(root, 8);
+    insert(root, 3);
+    insert(root, 6);
     insert(root, 7);
-    insert(root, 1);
     cout << "Inorder Traversal of BST is: " << endl;
     Inorder(root);
-    if (IsBST(root))
+    if (isBST(root))
         cout << "\nThe given tree is a BST" << endl;
     else
         cout << "\nNot a BST" << endl;
