@@ -29,7 +29,7 @@ vector<int> spiralTraversal(vector<vector<int>> &matrix, int m, int n)
             ans.push_back(matrix[row_start][i]);
         for (int i = row_start + 1; i <= row_end; i++)
             ans.push_back(matrix[i][col_end]);
-        if (row_start < row_end)
+        if (row_start < row_end && col_start < col_end)
         {
             for (int i = col_end - 1; i > col_start; i--)
                 ans.push_back(matrix[row_end][i]);

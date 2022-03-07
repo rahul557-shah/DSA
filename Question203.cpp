@@ -24,7 +24,7 @@ vector<vector<int>> spiralMatrix(int m, int n)
             ans[row_start][i] = val++;
         for (int i = row_start + 1; i <= row_end; i++)
             ans[i][col_end] = val++;
-        if (row_start < row_end)
+        if (row_start < row_end && col_start < col_end)
         {
             for (int i = col_end - 1; i > col_start; i--)
                 ans[row_end][i] = val++;
