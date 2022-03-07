@@ -1,4 +1,4 @@
-// Spiral Matrix II(Leetocode Q.59)
+// Spiral Matrix (Leetocode Q.54)
 #include <bits/stdc++.h>
 using namespace std;
 void printMatrix(vector<vector<int>> &matrix)
@@ -9,6 +9,12 @@ void printMatrix(vector<vector<int>> &matrix)
             cout << matrix[i][j] << " ";
         cout << endl;
     }
+}
+void printArray(vector<int> A)
+{
+    for (int i = 0; i < A.size(); i++)
+        cout << A[i] << " ";
+    cout << endl;
 }
 // Time->O(n^2)
 // Space->O(1)
