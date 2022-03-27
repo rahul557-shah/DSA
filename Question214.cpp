@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isBipartiteGraph(int src, vector<int> &color, vector<int> adj[])
+bool isBipartiteGraphBFS(int src, vector<int> &color, vector<int> adj[])
 {
     queue<int> q;
     q.push(src);
@@ -25,6 +25,23 @@ bool isBipartiteGraph(int src, vector<int> &color, vector<int> adj[])
     }
     return true;
 }
+bool isBipartiteGraphDFS(int node, vector<int> &color, vector<int> adj[])
+{
+    if (color[node] == -1)
+        color[node] = 1;
+    for (auto itr : adj[node])
+    {
+        if (color[itr] == -1)
+        {
+            color[itr] = 1 - color[node];
+            if (!isBipartiteGraphDFS(itr, color, adj))
+                return false;
+        }
+        else if (color[itr] == color[node])
+            return false;
+    }
+    return true;
+}
 // Time->O(n+e)
 // Space->O(n+e)+O(n)+O(n)
 bool checkBipartite(vector<int> adj[], int n)
@@ -34,7 +51,7 @@ bool checkBipartite(vector<int> adj[], int n)
     {
         if (color[i] == -1)
         {
-            if (!isBipartiteGraph(i, color, adj))
+            if (!isBipartiteGraphDFS(i, color, adj))
                 return false;
         }
     }
