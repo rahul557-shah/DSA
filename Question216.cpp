@@ -1,4 +1,4 @@
-// Topological Sort of a Graph
+// Topological Sort of a Graph(Using DFS)
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(vector<int> ans)
