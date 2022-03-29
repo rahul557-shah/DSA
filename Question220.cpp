@@ -1,14 +1,14 @@
 // Shortest Path in an Undirected Graph with unit weights
 #include <bits/stdc++.h>
 using namespace std;
-// Time->O(n+e)
-// Space->O(n+e)+O(n)+O(n)
 void printArray(vector<int> ans)
 {
     for (int i = 0; i < ans.size(); i++)
         cout << ans[i] << " ";
     cout << endl;
 }
+// Time->O(n+e)
+// Space->O(n+e)+O(n)+O(n)
 vector<int> shortestPath(int n, int src, vector<int> adj[])
 {
     vector<int> distance(n, INT_MAX);
