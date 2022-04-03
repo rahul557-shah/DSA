@@ -68,6 +68,6 @@ int main()
     }
     cout << "The Matrix is: " << endl;
     printArray(grid);
-    cout << "Size of Encalve is: " << closedIsland(grid) << endl;
+    cout << "Number of Encalve is: " << closedIsland(grid) << endl;
     return 0;
 }
