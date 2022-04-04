@@ -1,4 +1,4 @@
-// Number of operations to make network connected(Leetcode Q,1319)
+// Number of operations to make network connected(Leetcode Q.1319)
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(vector<vector<int>> connections)
