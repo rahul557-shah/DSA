@@ -31,7 +31,7 @@ bool dfs(vector<vector<int>> &grid, int i, int j, int row, int col, int &temp)
 }
 // Time->O(m*n)
 // Space->O(1)
-int closedIsland(vector<vector<int>> grid)
+int numberOfEnclaves(vector<vector<int>> grid)
 {
     int row = grid.size();
     int col = grid[0].size();
@@ -68,6 +68,6 @@ int main()
     }
     cout << "The Matrix is: " << endl;
     printArray(grid);
-    cout << "Number of Encalve is: " << closedIsland(grid) << endl;
+    cout << "Number of Encalve is: " << numberOfEnclaves(grid) << endl;
     return 0;
 }
