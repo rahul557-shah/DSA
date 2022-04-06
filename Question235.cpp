@@ -19,7 +19,7 @@ bool dfsCycle(int node, vector<int> &visited, vector<int> &dfsVis, vector<int> a
             if (dfsCycle(itr, visited, dfsVis, adj, presentCycle))
                 return presentCycle[node] = 1;
         }
-        else if (visited[itr] == 1 && dfsVis[itr] == 1)
+        else if (visited[itr] == 1  && dfsVis[itr] == 1)
             return presentCycle[node] = 1;
     }
     dfsVis[node] = 0;
