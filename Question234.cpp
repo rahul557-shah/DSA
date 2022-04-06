@@ -7,26 +7,26 @@ void printArray(vector<vector<int>> ans)
     {
         for (int j = 0; j < ans[0].size(); j++)
             cout << ans[i][j] << " ";
+        cout << endl;
     }
-    cout << endl;
 }
-void dfs(int node, vector<int> adj[], vector<vector<int>> &ans, vector<int> &path)
+void dfs(int node, vector<int> adj[], vector<vector<int>> &ans, vector<int> &path, int n)
 {
     path.push_back(node);
-    if (node == adj->size() - 1)
+    if (node == n - 1)
         ans.push_back(path);
 
     for (auto itr : adj[node])
-        dfs(itr, adj, ans, path);
+        dfs(itr, adj, ans, path, n);
     path.pop_back();
 }
 // Time->O(V+E)
 // Space->O(V)
-vector<vector<int>> allPaths(vector<int> adj[])
+vector<vector<int>> allPaths(vector<int> adj[], int n)
 {
     vector<int> path;
     vector<vector<int>> ans;
-    dfs(0, adj, ans, path);
+    dfs(0, adj, ans, path, n);
     return ans;
 }
 int main()
@@ -42,7 +42,7 @@ int main()
         cin >> u >> v;
         adj[u].push_back(v);
     }
-    vector<vector<int>> ans = allPaths(adj);
+    vector<vector<int>> ans = allPaths(adj, n);
     cout << "All the paths from source to target is: " << endl;
     printArray(ans);
     return 0;
