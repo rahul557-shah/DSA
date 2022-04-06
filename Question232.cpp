@@ -1,16 +1,7 @@
 // Keys and Rooms (Leetcode Q.841)
 #include <bits/stdc++.h>
 using namespace std;
-void printArray(vector<vector<int>> rooms)
-{
-    for (int i = 0; i < rooms.size(); i++)
-    {
-        for (int j = 0; j < rooms[0].size(); j++)
-            cout << rooms[i][j] << " ";
-        cout << endl;
-    }
-}
-void dfs(int node, vector<vector<int>> &rooms, vector<int> &visited)
+void dfs(int node, vector<int> rooms[], vector<int> &visited)
 {
     for (auto itr : rooms[node])
     {
@@ -23,9 +14,8 @@ void dfs(int node, vector<vector<int>> &rooms, vector<int> &visited)
 }
 // Time->O(V+E)
 // Spcae->O(V)
-bool canVisit(vector<vector<int>> &rooms)
+bool canVisit(vector<int> rooms[],int n)
 {
-    int n = rooms.size();
     vector<int> visited(n, 0);
     visited[0] = 1;
     dfs(0, rooms, visited);
@@ -38,19 +28,18 @@ bool canVisit(vector<vector<int>> &rooms)
 }
 int main()
 {
-    int n, m;
-    cout << "Enter the size: " << endl;
-    cin >> n >> m;
-    vector<vector<int>> rooms(n, vector<int>(m));
-    for (int i = 0; i < n; i++)
+    int n, e;
+    cout << "Enter the number of vertices and edges: " << endl;
+    cin >> n >> e;
+    vector<int> rooms[n];
+    for (int i = 0; i < e; i++)
     {
-        cout << "Enter the elements: " << endl;
-        for (int j = 0; j < m; j++)
-            cin >> rooms[i][j];
+        int u, v;
+        cout << "Enter the adjacent nodes: " << endl;
+        cin >> u >> v;
+        rooms[u].push_back(v);
     }
-    cout << "The Rooms are: " << endl;
-    printArray(rooms);
-    if (canVisit(rooms))
+    if (canVisit(rooms,n))
         cout << "All the rooms are visited!!" << endl;
     else
         cout << "Not visited!!" << endl;
