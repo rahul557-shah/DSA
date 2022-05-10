@@ -5,7 +5,7 @@ void printArray(vector<vector<int>> grid)
 {
     for (int i = 0; i < grid.size(); i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < grid[0].size(); j++)
             cout << grid[i][j] << " ";
         cout << endl;
     }

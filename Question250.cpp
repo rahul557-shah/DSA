@@ -5,7 +5,7 @@ void printArray(vector<vector<int>> grid)
 {
     for (int i = 0; i < grid.size(); i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < grid[0].size(); j++)
             cout << grid[i][j] << " ";
         cout << endl;
     }
@@ -104,7 +104,7 @@ int fun4(vector<vector<int>> &grid)
                     left += curr[j - 1];
                 else
                     left += 10e4;
-                curr[j]=min(up,left);
+                curr[j] = min(up, left);
             }
         }
         prev = curr;
@@ -125,6 +125,6 @@ int main()
     }
     cout << "The Grid is: " << endl;
     printArray(grid);
-    cout << "Number of unique paths is: " << fun4(grid) << endl;
+    cout << "Minimum path sum is: " << fun4(grid) << endl;
     return 0;
 }
