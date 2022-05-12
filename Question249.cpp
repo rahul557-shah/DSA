@@ -1,4 +1,4 @@
-// Grid Unique Paths(Leetcode Q.63)
+// Grid Unique Paths II(Leetcode Q.63)
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(vector<vector<int>> grid)
