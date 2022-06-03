@@ -10,18 +10,24 @@ void printArray(vector<vector<int>> grid)
         cout << endl;
     }
 }
+// Time->O(3^m)
+// Space->O(m)
 int fun1(int i, int j, int n, vector<vector<int>> &grid)
 {
     if (j < 0 || j > n - 1)
         return INT_MAX;
     if (i == 0)
         return grid[i][j];
+    int up = grid[i][j] + fun1(i - 1, j, n, grid);
+    int ld = grid[i][j] + fun1(i - 1, j - 1, n, grid);
+    int rd = grid[i][j] + fun1(i - 1, j + 1, n, grid);
+    return min(up, min(ld, rd));
 }
 int minimumFallingPath(vector<vector<int>> &grid)
 {
     int m = grid.size();
     int n = grid[0].size();
-    int mini = INT_MAX;
+    int mini = 1e4;
     for (int j = 0; j < n; j++)
         mini = min(mini, fun1(m - 1, j, n, grid));
     return mini;
@@ -39,6 +45,6 @@ int main()
             cin >> grid[i][j];
     }
     printArray(grid);
-    // cout << "Minimum path of the given grid is: " << fun4(grid) << endl;
+    cout << "Minimum falling path sum is: " << minimumFallingPath(grid) << endl;
     return 0;
 }
