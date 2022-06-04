@@ -1,4 +1,4 @@
-// Subset sum equal to 'K' (GFG and Coding Ninjas)
+// Count subset with sum 'k'(Coding Ninjas)
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(vector<int> arr)
@@ -10,36 +10,36 @@ void printArray(vector<int> arr)
 // Approach-I(Simple Recursion)
 // Time->O(2^n)
 // Space->O(n)
-bool fun1(int index, int target, vector<int> &arr)
+int fun1(int index, int target, vector<int> &arr)
 {
     if (target == 0)
-        return true;
+        return 1;
     if (index == 0)
         return arr[index] == target;
-    bool notTake = fun1(index - 1, target, arr);
-    bool take = false;
+    int notTake = fun1(index - 1, target, arr);
+    int take = 0;
     if (target >= arr[index])
         take = fun1(index - 1, target - arr[index], arr);
-    return take || notTake;
+    return take + notTake;
 }
 // Approach-II(Memoization)
 // Time->O(n*k)
 // Space->O(n*k)+O(n)
-bool fun2(int index, int target, vector<int> &arr, vector<vector<int>> &dp)
+int fun2(int index, int target, vector<int> &arr, vector<vector<int>> &dp)
 {
     if (target == 0)
-        return true;
+        return 1;
     if (index == 0)
         return arr[index] == target;
     if (dp[index][target] != -1)
         return dp[index][target];
-    bool notTake = fun2(index - 1, target, arr, dp);
-    bool take = false;
+    int notTake = fun2(index - 1, target, arr, dp);
+    int take = 0;
     if (target >= arr[index])
         take = fun2(index - 1, target - arr[index], arr, dp);
-    return dp[index][target] = take || notTake;
+    return dp[index][target] = take + notTake;
 }
-bool subsetSum(vector<int> &arr, int k)
+int subsetSum(vector<int> &arr, int k)
 {
     int n = arr.size();
     vector<vector<int>> dp(n, vector<int>(k + 1, -1));
@@ -48,23 +48,23 @@ bool subsetSum(vector<int> &arr, int k)
 // Approach-III(Tabulation)
 // Time->O(n*k)
 // Space->O(n*k)
-bool fun3(vector<int> &arr, int k)
+int fun3(vector<int> &arr, int k)
 {
     int n = arr.size();
     vector<vector<int>> dp(n, vector<int>(k + 1, 0));
     for (int i = 0; i < n; i++)
-        dp[i][0] = true;
+        dp[i][0] = 1;
     if (k >= arr[0])
-        dp[0][arr[0]] = true;
+        dp[0][arr[0]] = 1;
     for (int index = 1; index < n; index++)
     {
         for (int target = 1; target <= k; target++)
         {
-            bool notTake = dp[index - 1][target];
-            bool take = false;
+            int notTake = dp[index - 1][target];
+            int take = 0;
             if (target >= arr[index])
                 take = dp[index - 1][target - arr[index]];
-            dp[index][target] = take || notTake;
+            dp[index][target] = take + notTake;
         }
     }
     return dp[n - 1][k];
@@ -72,24 +72,24 @@ bool fun3(vector<int> &arr, int k)
 // Approach-IV(Space Optimization)
 // Time->O(n*k)
 // Space->O(k)
-bool fun4(vector<int> &arr, int k)
+int fun4(vector<int> &arr, int k)
 {
     int n = arr.size();
     vector<int> prev(k + 1, 0);
-    prev[0] = true;
+    prev[0] = 1;
     if (k >= arr[0])
-        prev[arr[0]] = true;
+        prev[arr[0]] = 1;
     for (int index = 1; index < n; index++)
     {
         vector<int> curr(k + 1, 0);
-        curr[0]=true;
+        curr[0] = 1;
         for (int target = 1; target <= k; target++)
         {
-            bool notTake = prev[target];
-            bool take = false;
+            int notTake = prev[target];
+            int take = false;
             if (target >= arr[index])
                 take = prev[target - arr[index]];
-            curr[target] = take || notTake;
+            curr[target] = take + notTake;
         }
         prev = curr;
     }
@@ -109,9 +109,6 @@ int main()
     int k;
     cout << "Enter the sum: " << endl;
     cin >> k;
-    if (fun4(arr, k))
-        cout << "Subset with sum K is present!! " << endl;
-    else
-        cout << "Not present!!" << endl;
+    cout << "Total Subset Sum are: " << fun4(arr, k) << endl;
     return 0;
 }

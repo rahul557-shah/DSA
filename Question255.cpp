@@ -100,7 +100,7 @@ bool fun4(vector<int> &arr)
     for (int index = 1; index < n; index++)
     {
         vector<int> curr(s1 + 1, 0);
-        curr[0]=0;
+        curr[0]=true;
         for (int target = 1; target <= s1; target++)
         {
             bool notTake = prev[target];
