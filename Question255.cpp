@@ -22,7 +22,7 @@ bool fun1(int index, int target, vector<int> &arr)
         take = fun1(index - 1, target - arr[index], arr);
     return take || notTake;
 }
-// Approach-I(Memoization)
+// Approach-II(Memoization)
 // Time->O(n*k)
 // Space->O(n*k)+O(n)
 bool fun2(int index, int target, vector<int> &arr, vector<vector<int>> &dp)
@@ -51,7 +51,7 @@ bool subsetSum(vector<int> &arr)
     vector<vector<int>> dp(n, vector<int>(s1 + 1, -1));
     return fun2(n - 1, s1, arr, dp);
 }
-// Approach-I(Tabulation)
+// Approach-III(Tabulation)
 // Time->O(n*k)
 // Space->O(n*k)
 bool fun3(vector<int> &arr)
@@ -81,7 +81,7 @@ bool fun3(vector<int> &arr)
     }
     return dp[n - 1][s1];
 }
-// Approach-I(Space Optimization)
+// Approach-IV(Space Optimization)
 // Time->O(n*k)
 // Space->O(k)
 bool fun4(vector<int> &arr)
