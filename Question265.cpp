@@ -44,8 +44,8 @@ int rodCutting(vector<int> &arr)
     return fun1(n - 1, n, arr);
 }
 // Approach-III(Tabulation)
-// Time-> O(n*target)
-// Space-> O(n*target)
+// Time-> O(n*n)
+// Space-> O(n*n)
 int fun3(vector<int> &arr, int n)
 {
     // int n = arr.size();
@@ -67,8 +67,8 @@ int fun3(vector<int> &arr, int n)
     return dp[n - 1][n];
 }
 // Approach-IV(Space Optimization)
-// Time-> O(n*target)
-// Space-> O(target)
+// Time-> O(n*n)
+// Space-> O(n)
 int fun4(vector<int> &arr, int n)
 {
     // int n = arr.size();
