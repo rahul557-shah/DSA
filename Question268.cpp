@@ -29,7 +29,7 @@ int fun3(string s1, string s2)
     }
     return ans;
 }
-// Approach-I(Space Optimization)
+// Approach-II(Space Optimization)
 // Time-> O(m*n)
 // Space-> O(n)
 int fun4(string s1, string s2)
