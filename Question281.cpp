@@ -103,7 +103,7 @@ int fun5(vector<int> &A)
     return maxi;
 }
 // Most Optimized
-//  Approach-V(Binary Search Approach)
+//  Approach-VI(Binary Search Approach)
 //  Time->O(n*logn)
 //  Space->O(n)
 int fun6(vector<int> &A)
