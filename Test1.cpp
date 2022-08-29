@@ -15,10 +15,7 @@ public:
     {
         this->speed = speed;
     }
-    virtual void display()
-    {
-        cout << "General Car" << endl;
-    }
+    virtual void display() = 0;
     void findSpeed()
     {
         cout << "The speed of car is: " << speed << endl;
@@ -31,10 +28,10 @@ public:
     {
         cout << "Innova Default Constructor!!" << endl;
     }
-    // void display()
-    // {
-    //     cout << "Innova Car!!" << endl;
-    // }
+    void display()
+    {
+        cout << "Innova Car!!" << endl;
+    }
 };
 class Swift : public Car
 {
@@ -57,6 +54,5 @@ int main()
     c->display();
     Swift *s = new Swift();
     s->display();
-    s->findSpeed();
     return 0;
 }
